@@ -13,7 +13,7 @@ Vue.use(VueSocketIOExt, socket);
 
 import { store } from './store'
 import IotaPayment from 'vue-iota-payment'
-Vue.use(IotaPayment, { store, path: '/payments' })
+Vue.use(IotaPayment, { store, url: 'http://localhost:5000', path: '/iotapay', api_path: '/iotapay/api' })
 
 
 new Vue({
