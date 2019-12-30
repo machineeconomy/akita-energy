@@ -8,9 +8,6 @@
       <h3>Action</h3>
       <h1 class="title">{{action}}</h1>
     </div>
-    <div class="right">
-      <img class="wind_gif" src="./assets/Windrad_1.gif" />
-    </div>
   </div>
 </template>
 
@@ -32,6 +29,10 @@ export default {
   },
   created() {
     this.getInfo()
+    setTimeout(function() {
+        // click on button
+        this.getInfo();
+      }, 10000);
   },
   methods: {
     paymentSuccess() {
@@ -98,7 +99,7 @@ body {
 }
 
 h3 {
-    margin-bottom: 0
+  margin-bottom: 0
 }
 .logo {
   width: 200px;
@@ -112,7 +113,7 @@ h3 {
 .right {
   margin-top: 100px;
   text-align: center;
-  width: 50%;
+  width: 30%;
   float: right;
 }
 
@@ -134,16 +135,11 @@ h3 {
   cursor: pointer;
 }
 
-.robot {
-  width: 50%;
-}
-
 .wind_gif {
-  margin-left: 50%;
   width: 100%;
 }
 .wind_img {
-  width: 100%;
+  width: 50%;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1); 
 }
