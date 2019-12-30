@@ -98,6 +98,10 @@ body {
   font-weight: bold;
 }
 
+h1 {
+  margin-top: 0;
+}
+
 h3 {
   margin-bottom: 0
 }
