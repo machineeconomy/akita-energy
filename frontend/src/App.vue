@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <h1 class="title">AKITA Wind Energy</h1>
-    <h2 class="sub-title">IOTA Machine Wallet</h2>
-    <div v-if="!payed">
-      <img class="wind_img" src="./assets/EnergyWind.png" />
-      <br>
-      <iota-payment class="pay-button" @paymentSuccess="paymentSuccess">Show QR Code</iota-payment>
+    <div class="left">
+      <h3>Machine Type</h3>
+      <h1 class="title">{{name}}</h1>
+      <h3>Wallet Balance</h3>
+      <h1 class="title">{{balance}}</h1>
+      <h3>Action</h3>
+      <h1 class="title">{{action}}</h1>
     </div>
-    <div v-else>
-        <img class="wind_gif" src="./assets/Windrad_1.gif" />
+    <div class="right">
+      <img class="wind_gif" src="./assets/Windrad_1.gif" />
     </div>
   </div>
 </template>
@@ -22,8 +23,15 @@ export default {
   },
   data() {
     return {
-      payed: false
+      payed: false,
+      name: 'Loading',
+      balance: 'Loading',
+      action: 'Loading',
+      last_tx: 'Loading'
     }
+  },
+  created() {
+    this.getInfo()
   },
   methods: {
     paymentSuccess() {
@@ -34,6 +42,20 @@ export default {
         location.reload();
       }, 10000);
       
+    },
+    getInfo() {
+      this.$http.get('http://localhost:5001/info')
+      .then((result) => {
+        console.log("result", result)
+        this.name = result.data.name
+        this.balance = result.data.balance
+        this.action = 'Waiting for Work'
+        this.last_tx = 'None'
+      })
+    },
+    order_product() {
+        console.log("logogogo")
+       this.action = 'Waiting for Pay'
     }
   }
 }
@@ -49,10 +71,7 @@ export default {
 }
 body {
   height: 100vh;
-  widows: 100%;
-  text-align: center;
-  justify-content: center;
-    background: linear-gradient(
+  background: linear-gradient(
     to bottom right,
     var(--akita-primary) 50%,
     var(--akita-secondary) 85%
@@ -63,7 +82,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--akita-light);
-  margin: 0 auto;
   margin-top: 60px;
 
   border-radius: 10px;
@@ -71,15 +89,31 @@ body {
   max-width: 600px;
 }
 .title {
-  font-size: 4em;
+  font-size: 3.5em;
   font-weight: bold;
 }
 .sub-title {
   font-size: 3em;
   font-weight: bold;
 }
+
+h3 {
+    margin-bottom: 0
+}
 .logo {
   width: 200px;
+}
+
+.left {
+  margin-left: 50px;
+  float: left;
+  margin-top: 50px;
+}
+.right {
+  margin-top: 100px;
+  text-align: center;
+  width: 50%;
+  float: right;
 }
 
 .pay-button button {
@@ -93,15 +127,23 @@ body {
   display: inline-block;
   font-size: 18px;
 }
+.pay-button a {
+    display: none;
+  }
 .pay-button button:hover {
   cursor: pointer;
 }
 
-.wind_gif {
+.robot {
   width: 50%;
 }
+
+.wind_gif {
+  margin-left: 50%;
+  width: 100%;
+}
 .wind_img {
-  width: 50%;
+  width: 100%;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1); 
 }
