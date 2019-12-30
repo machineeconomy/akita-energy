@@ -29,9 +29,10 @@ export default {
   },
   created() {
     this.getInfo()
+    let self = this
     setTimeout(function() {
         // click on button
-        this.getInfo();
+        self.getInfo();
       }, 10000);
   },
   methods: {
