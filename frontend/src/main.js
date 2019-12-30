@@ -9,7 +9,7 @@ Vue.prototype.$http = axios
 import VueSocketIOExt from 'vue-socket.io-extended';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5001', { path: '/payments/socket' });
+const socket = io('http://localhost:5001', { path: '/iotapay/socket' });
 
 Vue.use(VueSocketIOExt, socket);
 
