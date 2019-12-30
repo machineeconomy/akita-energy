@@ -29,7 +29,7 @@ SEED='REPLACEWITHEIGHTYONETRYTESEED'
 IOTANODE='https://nodes.thetangle.org:443'
 FALLBACKNODE='https://node01.iotatoken.nl'
 MAX_PAYMENT_TIME=4320
-PROVIDER_URL='http://localhost:5002/api/'
+PROVIDER_URL='http://localhost:5002/iotapay/api'
 NAME="Wind Energy"
 VALUE=2
 ```
