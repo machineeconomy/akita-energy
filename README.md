@@ -31,7 +31,7 @@ FALLBACKNODE='https://node01.iotatoken.nl'
 MAX_PAYMENT_TIME=4320
 PROVIDER_URL='http://localhost:5002/api/'
 NAME="Wind Energy"
-VALUE=1
+VALUE=2
 ```
 
 ### 3. Generate new seed
@@ -64,7 +64,7 @@ You will want to use the password generator with the following settings:
 
 - Insert your government provider url from [machineeconomy/akita-government](https://github.com/machineeconomy/akita-government)
 - Insert your name (example: "Wind Energy")
-- Insert an IOTA Value. (example: 1) 
+- Insert an IOTA Value. (example: 2) 
 
 ### 5. Build the frontend
 
@@ -76,7 +76,7 @@ npm run build
 cd ..
 ```
 
-### 5. Run energy
+### 6. Run energy
 
 enter this lines in your terminal.
 ```bash
