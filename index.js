@@ -26,9 +26,8 @@ app.get("/info", (req, res) => {
 });
 
 var options = {
-    mount: '/payments',
-    value: 100,
-    websockets: true
+    websockets: true,
+    api: true
     // ...
 }
 
